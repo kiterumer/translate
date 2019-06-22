@@ -1,21 +1,23 @@
 import md5 from './md5.min.js'
 
-const appid = '20180802000191219'
-const key = '02LMiYALQE2vR4q0kaef'
+const appid = '20190622000309550'
+const key = '_njGKpO1Ovccptq4Y6n2'
 
 function translate(q, { from = 'auto', to = 'auto' } = { from: 'auto', to: 'auto' }) {
   return new Promise((resolve, reject) => {
     let salt = Date.now()
+  
     let sign = md5(`${appid}${q}${salt}${key}`)
+    
     wx.request({
       url: 'https://fanyi-api.baidu.com/api/trans/vip/translate',
       data: {
-        q,
-        from,
-        to,
-        appid,
-        salt,
-        sign
+        q,  //请求翻译query
+        from,  //翻译源语言
+        to,  //译文语言
+        appid,  //app id
+        salt,  //随机数
+        sign  //签名
       },
       success(res) {
         if (res.data && res.data.trans_result) {

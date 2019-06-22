@@ -26,6 +26,7 @@ Page({
     
   },
   onInput: function(e) {
+    // 输入框右上角×的显示与隐藏
     this.setData({'query': e.detail.value})
     if(this.data.query.length > 0) {
       this.setData({ 'hideClearIcon': false })
@@ -36,6 +37,7 @@ Page({
     console.log('focus')
   },
   onTapClose: function() {
+    // 点击x隐藏，文字内容清除
     this.setData({ query: '', hideClearIcon: true})
   },
   onConfirm: function() {
